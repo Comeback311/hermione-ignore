@@ -28,7 +28,9 @@ module.exports = (hermione, opts = {}) => {
             });
 
             Object.keys(options).forEach(prop => {
-                options[prop] = options[prop].filter(selectorInside => selectorInside !== selector)
+                if (Array.isArray(options[prop])) {
+                    options[prop] = options[prop].filter(selectorInside => selectorInside !== selector)
+                }
             });
 
             let styleString = '';
